@@ -1,0 +1,30 @@
+run composer
+composer create-project codeigniter4/appstarter ci-news
+
+
+create virtual host in httpd-vhost.conf
+/Applications/MAMP/conf/apache/extra/httpd-vhost.conf
+
+<VirtualHost *:80>
+    DocumentRoot "/Applications/MAMP/htdocs/logbook/public"
+    ServerName logbook.test
+    ServerAlias www.logbook.test
+    ErrorLog "logs/myproject-error_log"
+    CustomLog "logs/myproject-access_log" common
+</VirtualHost>
+
+
+add entry to hosts file
+/private/etc/hosts
+
+127.0.0.1 logbook.test
+
+copy env to .env and change
+
+CI_ENVIRONMENT = development
+
+#--------------------------------------------------------------------
+# APP
+#--------------------------------------------------------------------
+
+app.baseURL = 'http://logbook.test'
